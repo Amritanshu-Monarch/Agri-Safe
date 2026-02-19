@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri-Safe | Context-Aware Crop Advisory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        agriGreen: '#2F855A',
+                        agriDark: '#22543D',
+                        agriLight: '#F0FFF4',
+                        soil: '#9C4221',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1625246333195-58197bd47f26?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="leaf" class="h-8 w-8 text-agriGreen"></i>
+                    <span class="text-2xl font-bold text-gray-900">Agri-Safe</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-agriGreen font-medium transition">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-agriGreen font-medium transition">How it Works</a>
+                    <a href="#impact" class="text-gray-600 hover:text-agriGreen font-medium transition">SDG Impact</a>
+                </div>
+                <button class="bg-agriGreen hover:bg-agriDark text-white px-5 py-2 rounded-full font-medium transition shadow-lg shadow-green-200">
+                    Launch App
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg h-screen flex items-center justify-center text-center px-4">
+        <div class="max-w-4xl mx-auto text-white">
+            <div class="inline-flex items-center gap-2 bg-green-500/20 backdrop-blur-md border border-green-400/30 px-4 py-1.5 rounded-full mb-6">
+                <span class="flex h-2 w-2 rounded-full bg-green-400"></span>
+                <span class="text-sm font-medium tracking-wide">AI-Powered Agriculture 2.0</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Don't Just Detect. <br>
+                <span class="text-green-400">Act smartly.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto">
+                The first crop advisory platform that combines disease detection with 
+                <strong>real-time weather context</strong> to prevent resource wastage.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="document.getElementById('features').scrollIntoView()" class="bg-agriGreen hover:bg-agriDark text-white text-lg px-8 py-4 rounded-lg font-bold transition flex items-center justify-center gap-2">
+                    <i data-lucide="scan-line"></i> Scan Your Crop
+                </button>
+                <button class="bg-white hover:bg-gray-50 text-gray-900 text-lg px-8 py-4 rounded-lg font-bold transition flex items-center justify-center gap-2">
+                    <i data-lucide="message-circle"></i> Chat Assistant
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Agri-Safe is Different</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Most apps just tell you what's wrong. We tell you <strong>when</strong> and <strong>how</strong> to fix it.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:border-green-200 transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i data-lucide="cloud-rain" class="h-32 w-32 text-agriGreen"></i>
+                    </div>
+                    <div class="bg-agriLight w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-agriGreen">
+                        <i data-lucide="droplets" class="h-8 w-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Spray Smart Technology</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Prevents pesticide washout. If our AI detects disease but the weather forecast predicts rain, we advise you to <strong>HOLD</strong> spraying, saving you money and protecting the soil.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <i data-lucide="check-circle-2" class="h-5 w-5 text-agriGreen"></i>
+                            Real-time OpenWeatherMap Integration
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <i data-lucide="check-circle-2" class="h-5 w-5 text-agriGreen"></i>
+                            Cost-saving advisory logic
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:border-green-200 transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i data-lucide="message-square" class="h-32 w-32 text-blue-600"></i>
+                    </div>
+                    <div class="bg-blue-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-blue-600">
+                        <i data-lucide="bot" class="h-8 w-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Vernacular RAG Chatbot</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Powered by Google Gemini. Unlike standard chatbots, ours is grounded in <strong>official government agriculture manuals</strong> to prevent hallucinations.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <i data-lucide="check-circle-2" class="h-5 w-5 text-blue-600"></i>
+                            Supports local Indian languages
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <i data-lucide="check-circle-2" class="h-5 w-5 text-blue-600"></i>
+                            Zero fake advice; 100% verified sources
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900">How It Works</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <div class="relative">
+                    <div class="bg-gray-50 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-inner">
+                        <i data-lucide="camera" class="h-10 w-10 text-gray-700"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">1. Snap a Photo</h4>
+                    <p class="text-gray-500 text-sm">Use your phone camera to scan the affected crop leaf.</p>
+                </div>
+                <div class="relative">
+                     <div class="hidden md:block absolute top-12 -left-1/2 w-full h-0.5 bg-gray-200 -z-10"></div>
+                    <div class="bg-agriLight rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-inner">
+                        <i data-lucide="cpu" class="h-10 w-10 text-agriGreen"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">2. AI + Weather Check</h4>
+                    <p class="text-gray-500 text-sm">MobileNetV2 identifies the disease while we fetch local weather data.</p>
+                </div>
+                <div class="relative">
+                    <div class="hidden md:block absolute top-12 -left-1/2 w-full h-0.5 bg-gray-200 -z-10"></div>
+                    <div class="bg-green-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-inner">
+                        <i data-lucide="shield-check" class="h-10 w-10 text-green-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">3. Get Safe Advice</h4>
+                    <p class="text-gray-500 text-sm">Receive a "Safe to Spray" or "Wait" recommendation instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="impact" class="py-20 bg-agriDark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6">Built for Impact</h2>
+                <p class="text-green-100 mb-8 text-lg">
+                    Agri-Safe isn't just a college project; it's a step towards sustainable farming. We directly address the United Nations Sustainable Development Goals.
+                </p>
+                <div class="flex gap-4">
+                    <div class="bg-white/10 p-4 rounded-lg border border-white/20">
+                        <span class="block text-2xl font-bold text-yellow-400 mb-1">SDG 2</span>
+                        <span class="text-sm">Zero Hunger</span>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-lg border border-white/20">
+                        <span class="block text-2xl font-bold text-orange-400 mb-1">SDG 12</span>
+                        <span class="text-sm">Responsible Consumption</span>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Farmer using phone" class="rounded-2xl shadow-2xl border-4 border-white/10">
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <i data-lucide="leaf" class="h-6 w-6 text-agriGreen"></i>
+                <span class="text-xl font-bold text-white">Agri-Safe</span>
+            </div>
+            <p class="text-sm mb-6">A Final Year B.Tech Project | Computer Science & Engineering</p>
+            <p class="text-xs text-gray-600">&copy; 2026 Agri-Safe Project Team. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
