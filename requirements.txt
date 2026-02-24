@@ -1,0 +1,30 @@
+# Agri-Safe Backend Dependencies
+
+# Web framework
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+
+# HTTP client (for OpenWeatherMap)
+httpx==0.27.0
+
+# Configuration management
+pydantic-settings==2.2.1
+
+# Image processing
+Pillow==10.3.0
+
+# CNN model inference
+tensorflow==2.16.1         # Use tensorflow-lite if deploying on edge devices
+# tflite-runtime==2.14.0   # Uncomment for TFLite-only (lighter)
+
+# Google Gemini (RAG chatbot)
+google-generativeai==0.5.4
+
+# PDF parsing for RAG knowledge base
+pdfplumber==0.11.0
+
+# Numpy
+numpy==1.26.4
+
+# Optional: FAISS for semantic search in large knowledge bases
+# faiss-cpu==1.8.0

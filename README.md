@@ -1,7 +1,3 @@
-# Agri-Safe
-
-
-
 # Agri-Safe Backend
 
 Context-Aware Crop Disease Detection & Advisory API
