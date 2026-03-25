@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri-Safe | Context-Aware Crop Advisory</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        agriGreen: '#2F855A',
+                        agriDark: '#22543D',
+                        agriLight: '#F0FFF4',
+                        soil: '#9C4221',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans text-gray-800 antialiased bg-gray-50 relative">
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="leaf" class="h-8 w-8 text-agriGreen"></i>
+                    <span class="text-2xl font-bold text-gray-900" data-i18n="brandName">Agri-Safe</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-agriGreen font-medium transition" data-i18n="navFeatures">Features</a>
+                    <a href="#market" class="text-gray-600 hover:text-agriGreen font-medium transition" data-i18n="navMarket">Market Prices</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-agriGreen font-medium transition" data-i18n="navHowItWorks">How it Works</a>
+                    
+                    <div class="flex items-center text-gray-600">
+                        <i data-lucide="globe" class="h-4 w-4 mr-1"></i>
+                        <select class="lang-selector bg-transparent border-none outline-none font-medium cursor-pointer text-sm">
+                            <option value="en">English</option>
+                            <option value="hi">हिन्दी (Hindi)</option>
+                        </select>
+                    </div>
+
+                    <button id="login-btn-desktop" class="bg-agriGreen hover:bg-agriDark text-white px-6 py-2 rounded-full font-medium transition shadow-md">
+                        <span data-i18n="navLogin">Login</span>
+                    </button>
+                </div>
+
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="login-btn-mobile" class="text-agriGreen font-medium" data-i18n="navLogin">Login</button>
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-agriGreen focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-4 shadow-lg absolute w-full left-0 top-16">
+            <a href="#features" class="block text-gray-600 font-medium pb-2 border-b border-gray-50" data-i18n="navFeatures">Features</a>
+            <a href="#market" class="block text-gray-600 font-medium pb-2 border-b border-gray-50" data-i18n="navMarket">Market Prices</a>
+            <a href="#how-it-works" class="block text-gray-600 font-medium pb-2" data-i18n="navHowItWorks">How it Works</a>
+            <div class="flex items-center text-gray-600 pt-2 border-t border-gray-100">
+                <i data-lucide="globe" class="h-4 w-4 mr-2"></i>
+                <select class="lang-selector bg-transparent border-none outline-none font-medium cursor-pointer w-full">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी (Hindi)</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg min-h-screen flex items-center justify-center text-center px-4 pt-16">
+        <div class="max-w-4xl mx-auto text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+                <span data-i18n="heroTitle1">Smart Farming,</span> <br>
+                <span class="text-green-400" data-i18n="heroTitle2">Simplified.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto" data-i18n="heroSub">
+                Scan your crops for diseases and get safe, weather-aware advice in your own language.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
+                
+                <button id="scan-crop-btn" class="bg-agriGreen hover:bg-agriDark text-white text-lg px-8 py-4 rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-lg">
+                    <i data-lucide="camera"></i> <span data-i18n="btnScan">Scan Crop</span>
+                </button>
+                <button id="voice-btn" class="bg-white hover:bg-gray-50 text-gray-900 text-lg px-8 py-4 rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-lg">
+                    <i data-lucide="mic" class="text-blue-600"></i> <span data-i18n="btnVoice">Voice Assistant</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="market" class="py-12 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+                    <i data-lucide="trending-up" class="text-agriGreen"></i> <span data-i18n="mandiTitle">Today's Mandi Prices</span>
+                </h2>
+                <span class="text-sm text-gray-500" data-i18n="mandiUpdate">Updated 1 hr ago</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 text-center">
+                    <p class="text-gray-500 text-sm font-medium mb-1" data-i18n="cropWheat">Wheat (Gehu)</p>
+                    <p class="text-xl font-bold text-gray-900">₹2,275 <span class="text-xs text-green-600 font-normal" data-i18n="perQtl">/ qtl</span></p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 text-center">
+                    <p class="text-gray-500 text-sm font-medium mb-1" data-i18n="cropRice">Rice (Dhaan)</p>
+                    <p class="text-xl font-bold text-gray-900">₹2,183 <span class="text-xs text-green-600 font-normal" data-i18n="perQtl">/ qtl</span></p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 text-center">
+                    <p class="text-gray-500 text-sm font-medium mb-1" data-i18n="cropSugar">Sugarcane</p>
+                    <p class="text-xl font-bold text-gray-900">₹340 <span class="text-xs text-green-600 font-normal" data-i18n="perQtl">/ qtl</span></p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 text-center">
+                    <p class="text-gray-500 text-sm font-medium mb-1" data-i18n="cropMustard">Mustard</p>
+                    <p class="text-xl font-bold text-gray-900">₹5,450 <span class="text-xs text-green-600 font-normal" data-i18n="perQtl">/ qtl</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+                    <div class="bg-agriLight w-12 h-12 rounded-full flex items-center justify-center mb-4 text-agriGreen">
+                        <i data-lucide="cloud-rain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="feat1Title">Weather-Smart Spraying</h3>
+                    <p class="text-gray-600" data-i18n="feat1Desc">If rain is coming, we'll tell you to wait before spraying pesticides, saving you money and effort.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mb-4 text-blue-600">
+                        <i data-lucide="bot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="feat2Title">Local Language Chat</h3>
+                    <p class="text-gray-600" data-i18n="feat2Desc">Talk to our AI assistant using voice or text in your native language for verified agricultural advice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-2">
+                <i data-lucide="leaf" class="h-6 w-6 text-agriGreen"></i>
+                <span class="text-xl font-bold text-white" data-i18n="brandName">Agri-Safe</span>
+            </div>
+            <p class="text-sm" data-i18n="footerText">Empowering Farmers with AI</p>
+        </div>
+    </footer>
+
+    <div id="custom-alert" class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden animate-scale-in text-center p-6">
+            <div id="alert-icon-container" class="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-green-100 text-agriGreen">
+                <i id="alert-icon" data-lucide="check-circle" class="h-8 w-8"></i>
+            </div>
+            <h3 id="alert-title" class="text-2xl font-bold text-gray-900 mb-2">Notice</h3>
+            <p id="alert-message" class="text-gray-600 mb-6 leading-relaxed">Action completed.</p>
+            <button id="close-alert-btn" class="w-full bg-agriGreen hover:bg-agriDark text-white font-bold py-3 rounded-lg transition shadow-md">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <div id="login-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in-up">
+            <div class="bg-agriLight p-6 text-center border-b border-green-100 relative">
+                <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+                <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm text-agriGreen">
+                    <i id="modal-header-icon" data-lucide="smartphone" class="h-8 w-8"></i>
+                </div>
+                <h3 id="modal-title" class="text-2xl font-bold text-gray-900" data-i18n="modalTitle">Welcome Back</h3>
+                <p id="modal-subtitle" class="text-gray-600 text-sm mt-1" data-i18n="modalSub">Login with your mobile number</p>
+            </div>
+            <div class="p-6">
+                
+                <form id="login-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="modalLabel">Mobile Number</label>
+                        <div class="flex border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-agriGreen focus-within:border-agriGreen transition">
+                            <span class="bg-gray-50 px-4 py-3 text-gray-500 font-medium border-r border-gray-300">+91</span>
+                            <input type="tel" id="mobile-input" class="w-full px-4 py-3 outline-none" placeholder="Enter 10 digit number" data-i18n-placeholder="modalPlaceholder">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-agriGreen hover:bg-agriDark text-white font-bold py-3 rounded-lg transition shadow-md">
+                        <span data-i18n="modalBtn">Get OTP</span>
+                    </button>
+                </form>
+
+                <form id="otp-form" class="space-y-4 hidden text-center">
+                    <p class="text-sm font-medium text-gray-700 mb-4">OTP sent to: <span id="display-mobile-num" class="font-bold text-agriGreen"></span></p>
+                    <div class="flex justify-center gap-3 mb-6">
+                        <input type="text" maxlength="1" class="w-12 h-14 border border-gray-300 rounded-lg text-center text-2xl font-bold focus:ring-2 focus:ring-agriGreen outline-none">
+                        <input type="text" maxlength="1" class="w-12 h-14 border border-gray-300 rounded-lg text-center text-2xl font-bold focus:ring-2 focus:ring-agriGreen outline-none">
+                        <input type="text" maxlength="1" class="w-12 h-14 border border-gray-300 rounded-lg text-center text-2xl font-bold focus:ring-2 focus:ring-agriGreen outline-none">
+                        <input type="text" maxlength="1" class="w-12 h-14 border border-gray-300 rounded-lg text-center text-2xl font-bold focus:ring-2 focus:ring-agriGreen outline-none">
+                    </div>
+                    <button type="button" id="verify-btn" class="w-full bg-agriGreen hover:bg-agriDark text-white font-bold py-3 rounded-lg transition shadow-md">
+                        <span data-i18n="verifyBtn">Verify & Login</span>
+                    </button>
+                    <button type="button" id="back-to-mobile-btn" class="text-sm text-gray-500 hover:text-agriGreen mt-4 inline-block">
+                        <span data-i18n="editNumber">Edit mobile number</span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="voice-toast" class="hidden fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-4 rounded-full shadow-2xl flex items-center gap-4 z-[100] animate-bounce-slight">
+        <div class="relative flex items-center justify-center h-4 w-4">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+        </div>
+        <span class="font-medium text-sm" data-i18n="toastListen">Listening... Speak now</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
